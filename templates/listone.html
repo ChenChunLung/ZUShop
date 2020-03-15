@@ -1,0 +1,42 @@
+{% extends 'base.html'  %}
+{% block title %} listone  {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>listone</h1>
+    <p class="lead">listone Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2> Display student Table one Data {{errormessage}} </h2>
+        ID: {{ unit.id  }} <br/>
+        NAME: {{ unit.cName  }} <br/>
+        SEX: {{ unit.cSex  }} <br/>
+        BIRTHDAY: {{ unit.cBirthday  }} <br/>
+        EMAIL: {{ unit.cEmail  }} <br/>
+        PHONE: {{ unit.cPhone  }} <br/>
+        ADDR: {{ unit.cAddr  }} <br/>
+
+        <p>
+
+        
+        </p>
+        <p><a href=""></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2></h2>
+        <p>
+        </p>
+        <p><a href=""></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2></h2>
+        <p>
+        </p>
+        <p><a href=""></a></p>
+    </div>
+</div>
+
+{% endblock %}

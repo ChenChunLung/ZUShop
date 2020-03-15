@@ -1,0 +1,55 @@
+{% extends 'base.html'  %}
+{% block title %} listall {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>ListAll</h1>
+    <p class="lead">listall Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2> Display student Table All Data </h2>
+        <table boder="1" cellpadding="0" cellspacing="0">
+            <th>ID</th>
+            <th>NAME </th>
+            <th>SEX</th>
+            <th>BIRTHDAY</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            <th>ADDR</th>
+            {% for student in students  %}
+                <tr>
+                    <td>{{ student.id  }}</td>
+                    <td>{{ student.cName   }}</td>
+                    <td>{{ student.cSex  }}</td>
+                    <td>{{ student.cBirthday  }}</td>
+                    <td>{{ student.cEmail  }}</td>
+                    <td>{{ student.cPhone  }}</td>
+                    <td>{{ student.cAddr  }}</td>
+                </tr>
+            {% endfor  %}
+        
+        </table>
+        <p>
+
+        
+        </p>
+        <p><a href=""></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2></h2>
+        <p>
+        </p>
+        <p><a href=""></a></p>
+    </div>
+    <div class="col-md-4">
+        <h2></h2>
+        <p>
+        </p>
+        <p><a href=""></a></p>
+    </div>
+</div>
+
+{% endblock %}

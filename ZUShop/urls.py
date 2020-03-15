@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from shop_app.views import sayhello,hello3,dice
+from shop_app.views import sayhello,hello3,dice,listone,listall
 from shop_app import views
 
 urlpatterns = [
@@ -23,5 +23,7 @@ urlpatterns = [
     path('hello/', sayhello),
     path('hello3/', hello3),
     path('dice/', dice),
+    path('listone/', listone),
+    path('listall/', listall),
 
 ]
