@@ -1,0 +1,53 @@
+{% extends 'base.html'  %}
+{% block title %} post1 {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>post1</h1>
+    <p class="lead">post1 Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="." method="POST" name="form1" >
+            {% csrf_token  %}
+            <table border="1" cellspacing="1" cellpadding="4">
+                <tr>
+                    <th>Name</th><td><input type="text" id="cName" name="cName" /></td>
+                </tr>
+                <tr>
+                    <th>Sex</th>
+                    <td>
+                        <input name="cSex" type="radio" id="cSex1" value="M" checked="checked"/>
+                        Man
+                        <input name="cSex" type="radio" id="cSex2" value="F" checked="checked"/>
+                        Female
+                    </td>
+                </tr>
+                <tr>
+                    <th>Birthday </th><td><input type="text" id="cBirthday" name="cBirthday" /></td>
+                </tr>
+                <tr>
+                    <th>Email </th><td><input type="text" id="cEmail" name="cEmail" /></td>
+                </tr>
+                <tr>
+                    <th>Phone </th><td><input type="text" id="cPhone" name="cPhone" /></td>
+                </tr>
+                <tr>
+                    <th>Addr  </th><td><input type="text" id="cAddr" name="cAddr" /></td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="center">
+                        <input type="submit" name="button" id="button" value="send" >
+                        <input type="reset" name="button2" id="button2" value="reset">
+                    </th>
+                </tr>
+            </table>
+
+            <span style="color:red" >{{message}}</span>
+        </form>    
+        
+    </div>
+</div>    
+{% endblock %}

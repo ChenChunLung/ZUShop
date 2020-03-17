@@ -1,0 +1,24 @@
+{% extends 'base.html'  %}
+{% block title %} post {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>post</h1>
+    <p class="lead">post Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="/post/" method="POST" name="form1" >
+            {% csrf_token  %}
+            <div>Please Input Name:<input type="text" name="username" />
+                <input type="submit" value="Send Data" />
+
+            </div>
+            <div>Receive Data: {{ mess  }}</div>
+        </form>    
+        
+    </div>
+</div>    
+{% endblock %}
