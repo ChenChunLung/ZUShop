@@ -28,6 +28,12 @@ urlpatterns = [
     path('post/', post),
     path('post1/', post1),
     path('index/', index),
+    path('postform/', views.postform),
+    path('post2/', views.post2),
+    path('delete/<int:id>/', views.delete),
+    path('edit/<int:id>/', views.edit),
+    path('edit/<int:id>/<str:mode>/', views.edit),
+
 
 
 ]

@@ -1,0 +1,62 @@
+{% extends 'base.html'  %}
+{% block title %} delete {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1>delete</h1>
+    <p class="lead">delete Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="/edit/{{unit.id}}/edit" method="GET" name="form1" >
+            {% csrf_token  %}
+            <table border="1" cellspacing="1" cellpadding="4">
+                <tr>
+                    <th>Name</th><td><input type="text" id="cName" name="cName" value={{unit.cName}}  /></td>
+                </tr>
+                <tr>
+                    <th>Sex {{unit.cSex}}</th>
+                    {% if unit.cSex == "M"  %}
+                    <td>
+                        <input name="cSex" type="radio" id="cSex1" value="M" checked="checked"/>
+                        Man
+                        <input name="cSex" type="radio" id="cSex2" value="F" />
+                        Female
+                    </td>
+                    {% else  %}
+                    <td>
+                        <input name="cSex" type="radio" id="cSex1" value="M"  />
+                        Man
+                        <input name="cSex" type="radio" id="cSex2" value="F" checked="checked" />
+                        Female
+                    </td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Birthday </th><td><input type="text" id="cBirthday" name="cBirthday" value={{unit.cBirthday}} /></td>
+                </tr>
+                <tr>
+                    <th>Email </th><td><input type="text" id="cEmail" name="cEmail" value={{unit.cEmail}}  /></td>
+                </tr>
+                <tr>
+                    <th>Phone </th><td><input type="text" id="cPhone" name="cPhone" value={{unit.cPhone}}  /></td>
+                </tr>
+                <tr>
+                    <th>Addr  </th><td><input type="text" id="cAddr" name="cAddr" value={{unit.cAddr}}  /></td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="center">
+                        <input type="submit" name="button" id="button" value="send" >
+                        <input type="reset" name="button2" id="button2" value="reset">
+                    </th>
+                </tr>
+            </table>
+
+            <span style="color:red" >{{message}}</span>
+        </form>    
+        
+    </div>
+</div>    
+{% endblock %}

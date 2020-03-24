@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from datetime import datetime
 import random
 from shop_app.models import student
+from shop_app.form import PostForm
+
 
 
 # Create your views here.
@@ -58,6 +60,75 @@ def post1(request):
 
 def index(request):
     return render(request, "index.html", locals())
+
+def postform(request):
+    postform = PostForm()
+    return render(request, "postform.html", locals())
+
+def post2(request):
+    if request.method == "POST":
+        postform = PostForm(request.POST)
+        if postform.is_valid():
+            cName = postform.cleaned_data['cName']
+            cSex = postform.cleaned_data['cSex']
+            cBirthday = postform.cleaned_data['cBirthday']
+            cEmail = postform.cleaned_data['cEmail']
+            cPhone = postform.cleaned_data['cPhone']
+            cAddr = postform.cleaned_data['cAddr']
+
+
+            unit = student.objects.create(cName=cName, cSex=cSex,
+                                      cBirthday=cBirthday, cEmail=cEmail, 
+                                      cPhone=cPhone, cAddr=cAddr)
+            unit.save()
+            message='Saved ....'
+            return redirect('/index/')
+        else:
+            message = 'Validate Code Error!!'
+    else:
+        message = "Name,Sex, Birthday must Input"
+        postform = PostForm()
+    return render(request, "post2.html", locals())  
+
+def delete(request, id=None):
+    if id != None:
+        if request.method == "POST":
+            id = request.POST['cId']
+            try:
+                unit = student.objects.get(id=id)
+                unit.delete()
+                return redirect('/index/')
+            except:
+                message = "Read Error"
+
+    return render(request, "delete.html", locals())
+
+def edit(request,id=None,mode=None):
+    if mode == "edit":
+        unit = student.objects.get(id=id)
+        unit.cName = request.GET['cName']
+        unit.cSex = request.GET['cSex']
+        unit.cBirthday = request.GET['cBirthday']
+        unit.cEmail = request.GET['cEmail']
+        unit.cPhone = request.GET['cPhone']
+        unit.cAddr = request.GET['cAddr']
+
+        unit.save()
+        message='Saved ....'
+        return redirect('/index/')
+       
+    else:
+        try:
+            unit = student.objects.get(id=id)
+            strdate = str(unit.cBirthday)
+            strdate2 = strdate.replace("年", "-")
+            strdate2 = strdate.replace("月", "-")
+            strdate2 = strdate.replace("日", "-")
+            unit.cBirthday = strdate2    
+        except:    
+	        message = "This Id is not exist"
+    
+    return render(request, "edit.html", locals())
 
 
 def handler500(request):
