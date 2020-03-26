@@ -1,0 +1,48 @@
+{% extends 'base.html'  %}
+{% block title %} index {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1> index</h1>
+    <p class="lead">index Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 align="left"> Display student Table All Data &nbsp;&nbsp;
+            <a href="/post1/">Add1</a>&nbsp;&nbsp;<a href="/post2/">Add2</a> </h2>
+        <form action="." method="POST" name="form1">
+            {% csrf_token  %}
+        <table boder="1" cellpadding="0" cellspacing="0">
+            <th>ID</th>
+            <th>NAME </th>
+            <th>SEX</th>
+            <th>BIRTHDAY</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            <th>ADDR</th>
+            {% for student in students  %}
+                <tr>
+                    <td>{{ student.id  }}</td>
+                    <td>{{ student.cName   }}</td>
+                    <td>{{ student.cSex  }}</td>
+                    <td>{{ student.cBirthday  }}</td>
+                    <td>{{ student.cEmail  }}</td>
+                    <td>{{ student.cPhone  }}</td>
+                    <td>{{ student.cAddr  }}</td>
+                    <td>
+                        <a href="/edit/{{student.id}}/" title="Edit1">Edit1</a>
+                        <a href="/edit2/{{student.id}}/load" title="Edit2">Edit2</a>
+                        <a href="/delete/{{student.id}}/" title="Delete">Delete</a>
+                    </td>
+                </tr>
+            {% endfor  %}
+        
+        </table>
+        </form>
+        
+    </div>
+</div>
+
+{% endblock %}

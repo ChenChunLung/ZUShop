@@ -1,0 +1,27 @@
+{% extends 'base.html'  %}
+{% block title %} index {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1> index</h1>
+    <p class="lead">index Demo</p>
+    <p><a href=""></a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 align="left"> Display student Table All Data</h2>
+        <form action="." method="POST" name="form1">
+            {% csrf_token  %}
+            <div>Account:<input type="text" name="username" id="username"></div>
+            <div>Password:<input type="text" name="password" id="password"></div>
+            <div>
+                <input type="submit" name="button" id="button" value="login" />
+            </div>    
+            <span style="color:red">{{message}}</span>
+        
+        </form>
+    </div>
+</div>
+
+{% endblock %}

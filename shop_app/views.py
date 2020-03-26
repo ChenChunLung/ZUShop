@@ -4,7 +4,9 @@ from datetime import datetime
 import random
 from shop_app.models import student
 from shop_app.form import PostForm
-
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib import auth
 
 
 # Create your views here.
@@ -129,6 +131,44 @@ def edit(request,id=None,mode=None):
 	        message = "This Id is not exist"
     
     return render(request, "edit.html", locals())
+
+def adduser(request):
+    try:
+        user = User.objects.get(username="test")
+    except:    
+        user = None
+        if user != None:
+            message = user.username + "Account Has Created!!"
+            return HttpResponse(message)
+        else:
+            user = User.objects.create_user("test", "test@test.com.tw", "aa123456")
+            user.first_name = "wen"
+            user.last_name = "lin"
+            user.is_staff = True
+            user.save()
+            return redirect('/admin/')
+
+def login(request):
+    if request.method == 'POST':
+        name = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=name, password=password)
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                #return redirect("/index/")
+                message = "Login Success"
+                return render(request, "index.html", locals())
+            else:
+                message = "Account is not enable"
+        else:
+            message = "Login Failed"
+
+    return render(request, "login.html", locals())
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/index/")
 
 
 def handler500(request):
